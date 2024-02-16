@@ -16,7 +16,7 @@ rs_vels = []
 wheel_vels = []
 target_vels = []
 
-print('Start!')
+print("Start!")
 for i in range(40):
     target_vel = 0.2
     target_vels.append(target_vel)
@@ -35,11 +35,10 @@ for i in range(40):
     rs_vels.append(rs_vel)
     time.sleep(0.05)
 
-print('End!')
+print("End!")
 pipeline.stop()
-plt.plot(rs_vels, label='rs')
-plt.plot(wheel_vels, label='wheel')
-plt.plot(target_vels, label='target_vel')
+plt.plot(rs_vels, label="rs")
+plt.plot(wheel_vels, label="wheel")
+plt.plot(target_vels, label="target_vel")
 plt.legend()
-plt.savefig('vel.png')
-
+plt.savefig("vel.png")

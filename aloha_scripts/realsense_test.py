@@ -6,16 +6,17 @@ from functools import partial
 from matplotlib import pyplot as plt
 
 attrs = [
-    'acceleration',
-    'angular_acceleration',
-    'angular_velocity',
-    'mapper_confidence',
-    'rotation',
-    'tracker_confidence',
-    'translation',
-    'velocity',
-    ]
-Pose = namedtuple('Pose', attrs)
+    "acceleration",
+    "angular_acceleration",
+    "angular_velocity",
+    "mapper_confidence",
+    "rotation",
+    "tracker_confidence",
+    "translation",
+    "velocity",
+]
+Pose = namedtuple("Pose", attrs)
+
 
 def main():
     pipeline = rs.pipeline()
@@ -29,7 +30,7 @@ def main():
     y_vels = []
 
     try:
-        print('Start!')
+        print("Start!")
         while True:
             frames = pipeline.wait_for_frames()
             pose_frame = frames.get_pose_frame()
@@ -50,18 +51,18 @@ def main():
                     return
             time.sleep(0.02)
     finally:
-        print('End!')
+        print("End!")
         pipeline.stop()
-        duration = (poses[-1][1]-poses[0][1])/1000
-        print(f'start: {poses[0][1]}')
-        print(f'end:   {poses[-1][1]}')
-        print(f'duration: {duration}s')
-        print(f'fps: {len(poses)/duration}')
-        plt.plot(z_vels, label='z_vel')
-        plt.plot(x_vels, label='x_vel')
-        plt.plot(y_vels, label='y_vel')
+        duration = (poses[-1][1] - poses[0][1]) / 1000
+        print(f"start: {poses[0][1]}")
+        print(f"end:   {poses[-1][1]}")
+        print(f"duration: {duration}s")
+        print(f"fps: {len(poses)/duration}")
+        plt.plot(z_vels, label="z_vel")
+        plt.plot(x_vels, label="x_vel")
+        plt.plot(y_vels, label="y_vel")
         plt.legend()
-        plt.savefig('rs_vel.png')
+        plt.savefig("rs_vel.png")
         plt.show()
 
 
